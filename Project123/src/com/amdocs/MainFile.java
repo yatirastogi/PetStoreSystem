@@ -49,6 +49,7 @@ public static void main(String[] args)
 				age=sc.nextInt();
 				System.out.print("Enter price");
 				price=sc.nextDouble();
+				if(age<0 || price<0 || petId<0 ) throw new PetException(petId);	
 				System.out.print("Is the pet vaccinated");
 				isVaccinated=sc.nextBoolean();
 				sc.nextLine();				
@@ -71,6 +72,7 @@ public static void main(String[] args)
 				petId=sc.nextInt();
 				System.out.println("Enter new price and vaccination status");
 				price= sc.nextDouble();
+				if(price<0 || petId<0 ) throw new PetException(petId);	
 				isVaccinated=sc.nextBoolean();
 				//since the datatype of isVaccinated in database is int
 				int intIsVaccinated=(isVaccinated) ? 1 : 0;
@@ -85,6 +87,7 @@ public static void main(String[] args)
 			case 3:
 			System.out.print("Enter pet id");
 			petId=sc.nextInt();
+			if(petId<0 ) throw new PetException(petId);	
 			count=p2.deletePetDetails(petId);
 			if(count==0)
 				 try{throw new PetException();}catch(PetException e) {}
@@ -116,6 +119,7 @@ public static void main(String[] args)
 			System.out.println("Enter price range");
 			double min=sc.nextDouble();
 			double max=sc.nextDouble();
+			if(min<0 || max<0 ) throw new PetException(1);		
 			ArrayList<Pet> li=p2.searchByPrice(min,max);
 			if(li.isEmpty())//if no pet price exist in that range then show pet not available
 				try{throw new PetException();}catch(PetException e) {}
